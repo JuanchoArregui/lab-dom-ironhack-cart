@@ -20,11 +20,11 @@ window.onload = function(){
 */
 function getTotalPrice() {
   console.log("función getTotalPrice llamada con el evento onclick");
-  unitPrices = document.getElementsByClassName("product-cost");
-  units = document.getElementsByClassName("units");
-  subtotals = document.getElementsByClassName("product-total");
+  var unitPrices = document.getElementsByClassName("product-cost");
+  var units = document.getElementsByClassName("units");
+  var subtotals = document.getElementsByClassName("product-total");
   console.log("total de artículos listados: " + unitPrices.length);
-  total = 0;
+  var total = 0;
 
   for (i=0; i<unitPrices.length; i++){
     console.log("precio artículo: " + parseFloat(unitPrices[i].innerHTML));
@@ -45,7 +45,7 @@ function getTotalPrice() {
 */
 function deleteItem() {
   console.log("FUNCTION deleteItem");
-  fatherProduct = this.parentElement.parentElement;
+  var fatherProduct = this.parentElement.parentElement;
   if (fatherProduct) {
     fatherProduct.innerHTML="";
     getTotalPrice()
@@ -60,60 +60,59 @@ function deleteItem() {
 */
 function createNewItem() {
   console.log("FUNCTION createNewItem");
-  newName = document.getElementById("newProductText").value;
-  newPrice = parseFloat(document.getElementById("newProductPrice").value);
+  var newName = document.getElementById("newProductText").value;
+  var newPrice = parseFloat(document.getElementById("newProductPrice").value);
   
   if (newName && newPrice >= 0) {
     console.log(newName);
     console.log(newPrice);
   /*Creamos la section del nuevo producto y lo insertamos */
-    newProduct = document.createElement('section');
+    var newProduct = document.createElement('section');
     newProduct.classList.add("product", "flex", "justified", "marg-bot");
         /*Creamos el div del nombre y lo insertamos */
-        divName = document.createElement('div');
+        var divName = document.createElement('div');
         divName.classList.add("product-name", "width-L");
-            spanName = document.createTextNode(newName);
+            var spanName = document.createTextNode(newName);
             divName.appendChild(spanName);
         newProduct.appendChild(divName);
         /*Creamos el div del precio y lo insertamos */
-        divPrice = document.createElement('div');
+        var divPrice = document.createElement('div');
         divPrice.classList.add("width-S");
-            dollar = document.createTextNode("$");
+            var dollar = document.createTextNode("$");
             divPrice.appendChild(dollar);
-            spanPrice = document.createElement('span');
+            var spanPrice = document.createElement('span');
             spanPrice.classList.add("product-cost");
-            nodePrice = document.createTextNode(newPrice);
+            var nodePrice = document.createTextNode(newPrice);
             spanPrice.appendChild(nodePrice);
             divPrice.appendChild(spanPrice);
         newProduct.appendChild(divPrice);
         /*Creamos el div de la cantidad y lo insertamos */
-        divQty = document.createElement('div');
+        var divQty = document.createElement('div');
         divQty.classList.add("product-units", "width-S");
-            labelQty = document.createElement('label');
+            var labelQty = document.createElement('label');
             labelQty.appendChild(document.createTextNode("QTY"));
             divQty.appendChild(labelQty);
-            inputQty = document.createElement("input");
-            inputQty.setAttribute("class", "units");
-            inputQty.setAttribute("class",  "width-F");
+            var inputQty = document.createElement("input");
+            inputQty.setAttribute("class", "units width-F");
             inputQty.setAttribute('type', 'number');
             inputQty.setAttribute('min', '0');
             inputQty.setAttribute('value', '0');
             divQty.appendChild(inputQty);
         newProduct.appendChild(divQty);
         /*Creamos el div del producto-total y lo insertamos */
-        divSubTotal = document.createElement('div');
+        var divSubTotal = document.createElement('div');
         divSubTotal.classList.add("width-S");
-            dollar = document.createTextNode("$");
-            divSubTotal.appendChild(dollar);
-            spanTotal = document.createElement('span');
+            var dollar2 = document.createTextNode("$");
+            divSubTotal.appendChild(dollar2);
+            var spanTotal = document.createElement('span');
             spanTotal.classList.add("product-total");
-            nodeTotal = document.createTextNode("0");
+            var nodeTotal = document.createTextNode("0");
             spanTotal.appendChild(nodeTotal);
             divSubTotal.appendChild(spanTotal);
         newProduct.appendChild(divSubTotal);
         /*Creamos el div DEL BOTÓN y lo insertamos */
-        divBtn = document.createElement('div');
-            btnDelete = document.createElement('button');
+        var divBtn = document.createElement('div');
+            var btnDelete = document.createElement('button');
             btnDelete.appendChild(document.createTextNode('Delete'));
             btnDelete.classList.add("btn", "btn-delete");
             divBtn.appendChild(btnDelete);
